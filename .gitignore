@@ -1,0 +1,5 @@
+venv/
+*.csv
+worldApiRest/db.sqlite3
+worldApiRest/restApi/migrations/0001_initial.py
+
