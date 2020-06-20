@@ -2,6 +2,10 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 import csv
+import os
+
+if not os.path.isdir("data"):
+    os.mkdir("data")
 
 urlBase = "https://www.populationdata.net"
 sizeUrlBase = len(urlBase)
@@ -46,9 +50,8 @@ def buildData(link):
                 else:
                     row.append(td.text)
             dico = dict(zip(header[1:], row[1:]))
-            if len(dico) > 0:
+            if len(dico) != 0 and 'Localisations (principales)' not in row:
                 writer.writerow(dico)
-                print(dico)
 
 
 if __name__ == "__main__":

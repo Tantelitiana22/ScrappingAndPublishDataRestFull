@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 import glob
-
+import os
 
 def getColumnsStringType(dfEnt):
     dfFunc = dfEnt.copy()
@@ -37,4 +37,7 @@ if __name__ == "__main__":
 
         readData = pd.read_csv(file)
         dataToSave = getColumnsStringType(readData)
+
+        if not os.path.isdir("dataCleaned"):
+            os.mkdir("dataCleaned")
         dataToSave.to_csv("dataCleaned/"+newFileName, index=False)
